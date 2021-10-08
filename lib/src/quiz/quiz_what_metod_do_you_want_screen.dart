@@ -66,7 +66,7 @@ class _QuizWhatMetodDoYouWantScreen
                       TextStyle(color: Colors.white, fontSize: MySize.size14),
                 ),
                 SizedBox(height: MySize.size28),
-                QuizOptionsListView(options: options),
+                QuizOptionsListView(options: options, multiSelection: false,),
                 const Spacer(),
                 FullWidthButton(
                   text: "Продолжить",

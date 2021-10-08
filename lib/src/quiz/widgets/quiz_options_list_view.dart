@@ -4,8 +4,10 @@ import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
 class QuizOptionsListView extends StatefulWidget {
   final List<QuizOption> options;
+  final bool multiSelection;
 
-  const QuizOptionsListView({Key? key, required this.options})
+  const QuizOptionsListView(
+      {Key? key, required this.options, this.multiSelection = true})
       : super(key: key);
 
   @override
@@ -66,11 +68,14 @@ class _QuizOptionsListViewState extends State<QuizOptionsListView> {
                       ),
                     ),
                   SizedBox(height: MySize.size10),
-                  Text(
-                    item.text,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: MySize.size14,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 16.0),
+                    child: Text(
+                      item.text,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: MySize.size14,
+                      ),
                     ),
                   ),
                   SizedBox(height: MySize.size8),
@@ -79,14 +84,20 @@ class _QuizOptionsListViewState extends State<QuizOptionsListView> {
               subtitle: item.subtitle != null
                   ? Opacity(
                       opacity: 0.5,
-                      child: Text(
-                        item.subtitle!,
-                        style: const TextStyle(color: Colors.white60),
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 16.0),
+                        child: Text(
+                          item.subtitle!,
+                          style: const TextStyle(color: Colors.white60),
+                        ),
                       ),
                     )
                   : null,
               value: _isChecked[index],
               onChanged: (value) => setState(() {
+                if (!widget.multiSelection) {
+                  _isChecked = List<bool>.filled(widget.options.length, false);
+                }
                 _isChecked[index] = value!;
               }),
             ),
