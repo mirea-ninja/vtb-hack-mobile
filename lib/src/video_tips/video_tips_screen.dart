@@ -88,9 +88,11 @@ class _VideoTipsScreenState extends State<VideoTipsScreen> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 418,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: const [
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30)),
+                  boxShadow: [
                     BoxShadow(
                       color: Color(0x267e7e7e),
                       blurRadius: 250,
