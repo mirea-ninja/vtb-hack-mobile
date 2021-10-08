@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
-import 'package:vtb_hack_mobile/src/quiz/quiz_question_money_to_invest_screen.dart';
+import 'package:vtb_hack_mobile/src/quiz/quiz_what_do_you_want_screen.dart';
 import 'package:vtb_hack_mobile/src/quiz/widgets/quiz_options_list_view.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
@@ -87,8 +87,7 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              QuizQuestionMoneyToInvestScreen()),
+                          builder: (context) => QuizWhatDoYouWantScreen()),
                     );
                   },
                 ),
