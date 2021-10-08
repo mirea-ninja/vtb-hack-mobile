@@ -34,6 +34,12 @@ class _QuizWhatDoYouWantScreenState extends State<QuizWhatDoYouWantScreen> {
     QuizOption(
       text: "Получить опыт",
     ),
+    QuizOption(
+      text: "Получить опыт",
+    ),
+    QuizOption(
+      text: "Получить опыт",
+    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -79,8 +85,8 @@ class _QuizWhatDoYouWantScreenState extends State<QuizWhatDoYouWantScreen> {
                         TextStyle(color: Colors.white, fontSize: MySize.size14),
                   ),
                   SizedBox(height: MySize.size28),
-                  QuizOptionsListView(options: options),
-                  const Spacer(),
+                  Expanded(child: QuizOptionsListView(options: options)),
+                  // const Spacer(),
                   FullWidthButton(
                     text: "Продолжить",
                     onPressed: () {
