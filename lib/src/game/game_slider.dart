@@ -25,6 +25,7 @@ class _GameSliderState extends State<GameSlider> {
   double _panelHeightOpen = 0;
   double _panelHeightClosed = 95.0;
   bool _play = false;
+  final PanelController _panelcontroller = PanelController() ;
 
 
   @override
@@ -41,12 +42,15 @@ class _GameSliderState extends State<GameSlider> {
       _play = !_play;
     });
     if (_play) {
+      _panelcontroller.open();
       Timer.periodic(Duration(seconds: 1), (Timer timer) {
         if (_play == false) {
           timer.cancel();
         }
         Provider.of<InvestBalance>(context, listen: false).changeBalance(random.nextInt(100).toDouble());
       });
+    } else {
+      _panelcontroller.close();
     }
   }
 
@@ -63,6 +67,7 @@ Widget build(BuildContext context) {
       alignment: Alignment.topCenter,
       children: <Widget>[
         SlidingUpPanel(
+          controller: _panelcontroller,
           maxHeight: _panelHeightOpen,
           minHeight: _panelHeightClosed,
           parallaxEnabled: true,
