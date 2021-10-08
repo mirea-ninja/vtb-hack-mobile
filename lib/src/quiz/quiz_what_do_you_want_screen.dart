@@ -80,8 +80,8 @@ class _QuizWhatDoYouWantScreenState extends State<QuizWhatDoYouWantScreen> {
                         TextStyle(color: Colors.white, fontSize: MySize.size14),
                   ),
                   SizedBox(height: MySize.size28),
-                  QuizOptionsListView(options: options),
-                  const Spacer(),
+                  Expanded(child: QuizOptionsListView(options: options)),
+                  SizedBox(height: MySize.size16),
                   FullWidthButton(
                     text: "Продолжить",
                     onPressed: () {
