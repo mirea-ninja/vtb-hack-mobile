@@ -55,7 +55,7 @@ class _QuizOptionsListViewState extends State<QuizOptionsListView> {
                 title: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (item.title!.isNotEmpty)
+                    if (item.title != null)
                       Text(
                         item.title!,
                         style: TextStyle(
@@ -76,7 +76,7 @@ class _QuizOptionsListViewState extends State<QuizOptionsListView> {
                     SizedBox(height: MySize.size8),
                   ],
                 ),
-                subtitle: item.subtitle!.isNotEmpty
+                subtitle: item.subtitle != null
                     ? Opacity(
                         opacity: 0.5,
                         child: Text(

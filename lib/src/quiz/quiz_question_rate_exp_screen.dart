@@ -87,7 +87,8 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => QuizWhatDoYouWantScreen()),
+                          builder: (context) =>
+                              const QuizWhatDoYouWantScreen()),
                     );
                   },
                 ),
