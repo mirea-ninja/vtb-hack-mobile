@@ -35,57 +35,54 @@ class _QuizPortfelScreen extends State<QuizPortfelScreen> {
         backgroundColor: const Color.fromRGBO(34, 90, 214, 1),
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(MySize.size30!),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "7/7",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
-                ),
-                SizedBox(height: MySize.size24),
-                Text(
-                  "Ваш инвестиционный профиль",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: MySize.size22,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: MySize.size16),
-                Text(
-                  "Вы готовы идти на небольшой риск ради получения дополнительного дохода.  Предлагаем на начальном этапе пройти обучение и начать зарабатывать на инвестициях!",
-                  style:
-                      TextStyle(color: Colors.white, fontSize: MySize.size14),
-                ),
-                SizedBox(height: MySize.size28),
-                QuizOptionsListView(
-                  options: options,
-                  multiSelection: false,
-                ),
-                SizedBox(height: MySize.size16),
-                Text(
-                  "Аналитики подобрали вам бесплатные портфели, подходящие под ваш инвестиционный профиль.Первое время вы будете получать рекомендации от личного финансового ассистента",
-                  style:
-                      TextStyle(color: Colors.white, fontSize: MySize.size14),
-                ),
-                const Spacer(),
-                FullWidthButton(
-                  text: "Завершить",
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => GameHomeScreen()),
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
+              padding: EdgeInsets.all(MySize.size30!),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "7/7",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: MySize.size24),
+                  Text(
+                    "Ваш инвестиционный профиль",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: MySize.size22,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: MySize.size16),
+                  Text(
+                    "Вы готовы идти на небольшой риск ради получения дополнительного дохода.  Предлагаем на начальном этапе пройти обучение и начать зарабатывать на инвестициях!",
+                    style:
+                        TextStyle(color: Colors.white, fontSize: MySize.size14),
+                  ),
+                  SizedBox(height: MySize.size28),
+                  Expanded(child: QuizOptionsListView(options: options)),
+                  SizedBox(height: MySize.size16),
+                  Text(
+                    "Аналитики подобрали вам бесплатные портфели, подходящие под ваш инвестиционный профиль. Первое время вы будете получать рекомендации от личного финансового ассистента",
+                    style:
+                        TextStyle(color: Colors.white, fontSize: MySize.size14),
+                  ),
+                  SizedBox(height: MySize.size16),
+                  FullWidthButton(
+                    text: "Завершить",
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GameHomeScreen()),
+                      );
+                    },
+                  ),
+                ],
+              )),
         ));
   }
 }

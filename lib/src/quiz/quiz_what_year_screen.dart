@@ -76,7 +76,7 @@ class _QuizWhatYearScreen extends State<QuizWhatYearScreen> {
                 const Spacer(),
                 Center(
                   child: Text(
-                    "от ${getCurrentInterval()[0]} год",
+                    "${getCurrentInterval()[1]} год",
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 33,
