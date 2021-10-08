@@ -17,9 +17,9 @@ class QuizWhatMetodDoYouWantScreen extends StatefulWidget {
 class _QuizWhatMetodDoYouWantScreen
     extends State<QuizWhatMetodDoYouWantScreen> {
   List<QuizOption> options = [
-    QuizOption(text: "Получение небольшого дохода без риска"),
-    QuizOption(text: "Получать средний доход использую незначительный риск"),
-    QuizOption(text: "Высокий риск, высокий доход"),
+    QuizOption(text: "Получать небольшого доход, без риска"),
+    QuizOption(text: "Получать средний доход, готов на незначительный риск"),
+    QuizOption(text: "Получать высокий доход, готов на значительный риск"),
   ];
 
   @override
@@ -39,7 +39,9 @@ class _QuizWhatMetodDoYouWantScreen
                       style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                           alignment: Alignment.centerLeft),
-                      onPressed: () {Navigator.of(context).pop();},
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                       child: const Text(
                         "Назад",
                         style: TextStyle(color: Colors.white),
@@ -53,7 +55,7 @@ class _QuizWhatMetodDoYouWantScreen
                 ),
                 SizedBox(height: MySize.size24),
                 Text(
-                  "Какой метод инвестирования вам подходит?",
+                  "Ваши ожидания доходности от инвестиций?",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: MySize.size22,
@@ -61,12 +63,15 @@ class _QuizWhatMetodDoYouWantScreen
                 ),
                 SizedBox(height: MySize.size16),
                 Text(
-                  "Возможность выбрать один вариант",
+                  "Можно выбрать один вариант ответа",
                   style:
                       TextStyle(color: Colors.white, fontSize: MySize.size14),
                 ),
                 SizedBox(height: MySize.size28),
-                QuizOptionsListView(options: options, multiSelection: false,),
+                QuizOptionsListView(
+                  options: options,
+                  multiSelection: false,
+                ),
                 const Spacer(),
                 FullWidthButton(
                   text: "Продолжить",
