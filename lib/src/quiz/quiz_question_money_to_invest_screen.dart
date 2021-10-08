@@ -17,7 +17,7 @@ class QuizQuestionMoneyToInvestScreen extends StatefulWidget {
 
 class _QuizQuestionMoneyToInvestScreenState
     extends State<QuizQuestionMoneyToInvestScreen> {
-  double _value = 1000;
+  double _value = 1;
 
   final List<int> _chartData = <int>[
     1000,
@@ -32,12 +32,10 @@ class _QuizQuestionMoneyToInvestScreenState
   ];
 
   List<int> getCurrentInterval() {
-    for (int i = 1; i < _chartData.length; i++) {
-      if (_value <= _chartData[i] && _value >= _chartData[i - 1]) {
-        return [_chartData[i - 1] ~/ 1000, _chartData[i] ~/ 1000];
-      }
-    }
-    return [_chartData[0] ~/ 1000, _chartData[1] ~/ 1000];
+    return [
+      _chartData[_value.toInt()] ~/ 1000,
+      _chartData[_value.toInt() + 1] ~/ 1000
+    ];
   }
 
   @override
@@ -57,11 +55,13 @@ class _QuizQuestionMoneyToInvestScreenState
                       style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                           alignment: Alignment.centerLeft),
-                      onPressed: () {Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const GameHomeScreen()),
-                      );},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const GameHomeScreen()),
+                        );
+                      },
                       child: const Text(
                         "Пропустить",
                         style: TextStyle(color: Colors.white),
@@ -105,14 +105,14 @@ class _QuizQuestionMoneyToInvestScreenState
                 SfSlider(
                   activeColor: Colors.white,
                   inactiveColor: Colors.white,
-                  min: _chartData.first,
-                  max: _chartData.last,
+                  min: 0,
+                  max: 7,
                   value: _value,
-                  interval: _chartData.last / 10,
+                  interval: 1,
                   showTicks: true,
                   showLabels: false,
-                  enableTooltip: true,
-                  stepSize: 1000,
+                  enableTooltip: false,
+                  stepSize: 1,
                   onChanged: (dynamic value) {
                     setState(() {
                       _value = value;
