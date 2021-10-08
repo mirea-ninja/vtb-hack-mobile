@@ -35,12 +35,6 @@ class _QuizWhatDoYouWantScreenState extends State<QuizWhatDoYouWantScreen> {
     QuizOption(
       text: "Получить опыт",
     ),
-    QuizOption(
-      text: "Получить опыт",
-    ),
-    QuizOption(
-      text: "Получить опыт",
-    ),
   ];
   @override
   Widget build(BuildContext context) {
