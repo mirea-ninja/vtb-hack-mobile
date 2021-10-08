@@ -20,7 +20,7 @@ class QuickStartScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const QuickStartLabel(
-                    text: 'Быстрое начало',
+                    text: 'Итак начнем!',
                     backgroundColor: Color(0xffffe60a),
                     textColor: Color(0xff373737)),
                 Padding(
@@ -40,73 +40,69 @@ class QuickStartScreen extends StatelessWidget {
                   "Выполните задания и получи акции и бонуы от банка ",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 41,
+                    fontSize: 31,
                     fontFamily: "Rubik",
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: MySize.size22!),
-                  child: const Opacity(
-                    opacity: 0.50,
-                    child: Text(
-                      "Как стать инвестором за 1 год",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
+                const SizedBox(height: 15),
+                const Text(
+                  "Как стать инвестором за 1 год?\nМы предлагаем вам увидеть как работают инвестиции и что будет через год, после того как вы купите акции на 10 000 рублей!",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
                   ),
                 ),
-                const QuickStartLabel(
-                    text: '+ 1 акция в подарок!',
-                    backgroundColor: Colors.white,
-                    textColor: Color(0xff225ad6)),
-                SizedBox(height: MySize.size42),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: MySize.size8!),
-                  child: Container(
-                    width: 351,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: const Color(0xff5886eb),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset('assets/icons/time.svg'),
-                        SizedBox(width: MySize.size8),
-                        const Text(
-                          "10 минут погружения в тему",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontFamily: "Rubik",
-                            fontWeight: FontWeight.w500,
-                          ),
-                        )
-                      ],
-                    ),
+                const Spacer(),
+                Container(
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color(0xff1649bb),
                   ),
-                ),
-                const Expanded(
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Opacity(
-                      opacity: 0.50,
-                      child: Text(
-                        "Как стать инвестором за 1 год",
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset('assets/icons/headphones.svg'),
+                      SizedBox(width: MySize.size8),
+                      const Text(
+                        "Используйте наушники",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 16,
+                          fontSize: 15,
+                          fontFamily: "Rubik",
+                          fontWeight: FontWeight.w500,
                         ),
-                      ),
-                    ),
+                      )
+                    ],
                   ),
                 ),
-                SizedBox(height: MySize.size16),
-                FullWidthButton(text: 'Начать', onPressed: () {}),
+                const SizedBox(height: 14),
+                Container(
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color(0xff5886eb),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset('assets/icons/time.svg'),
+                      SizedBox(width: MySize.size8),
+                      const Text(
+                        "10 минут погружения в тему",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontFamily: "Rubik",
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 14),
+                FullWidthButton(text: 'Приступить', onPressed: () {}),
               ],
             )),
       ),
