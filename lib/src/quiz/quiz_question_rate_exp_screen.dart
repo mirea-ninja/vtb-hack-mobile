@@ -19,8 +19,7 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
     QuizOption(
       text: "Вы познакомитесь с базовыми терминами и пройдете быстрое обучение",
       title: "Новичок",
-      subtitle:
-          "Вы познакомитесь с базовыми терминами и пройдете быстрое обучение",
+      subtitle: "Научитесь составлять инвестиционный портфел.",
     ),
     QuizOption(
       text:
@@ -52,7 +51,9 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
                       style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                           alignment: Alignment.centerLeft),
-                      onPressed: () {Navigator.of(context).pop();},
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                       child: const Text(
                         "Назад",
                         style: TextStyle(color: Colors.white),
@@ -74,12 +75,15 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
                 ),
                 SizedBox(height: MySize.size16),
                 Text(
-                  "Настройки можно будет поменять в настройках приложения",
+                  "Уровень можно поменять в настройках приложения",
                   style:
                       TextStyle(color: Colors.white, fontSize: MySize.size14),
                 ),
                 SizedBox(height: MySize.size28),
-                QuizOptionsListView(options: options, multiSelection: false,),
+                QuizOptionsListView(
+                  options: options,
+                  multiSelection: false,
+                ),
                 const Spacer(),
                 FullWidthButton(
                   text: "Продолжить",
