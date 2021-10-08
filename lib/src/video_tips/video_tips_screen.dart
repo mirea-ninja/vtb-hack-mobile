@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:video_player/video_player.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
@@ -12,7 +13,8 @@ class VideoTipsScreen extends StatefulWidget {
       required this.text,
       required this.videoUrl,
       required this.buttonText,
-      required this.onButtonClick})
+      required this.onButtonClick,
+      required this.onSkipClick})
       : super(key: key);
 
   final String infoTitle;
@@ -21,6 +23,7 @@ class VideoTipsScreen extends StatefulWidget {
   final String videoUrl;
   final String buttonText;
   final Function onButtonClick;
+  final Function onSkipClick;
 
   @override
   _VideoTipsScreenState createState() => _VideoTipsScreenState();
@@ -78,23 +81,28 @@ class _VideoTipsScreenState extends State<VideoTipsScreen> {
                 }
               },
             ),
-            Row(
-              children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      alignment: Alignment.centerLeft),
-                  onPressed: () {},
-                  child: const Text(
-                    "Пропустить",
-                    style: TextStyle(color: Colors.white),
+            Padding(
+              padding: EdgeInsets.all(MySize.size12!),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    'assets/icons/vtb.svg',
                   ),
-                ),
-                const Text(
-                  "1/7",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
+                  SizedBox(width: MySize.size12),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                        alignment: Alignment.centerLeft),
+                    onPressed: () {
+                      widget.onSkipClick();
+                    },
+                    child: const Text(
+                      "Пропустить",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Align(
               alignment: Alignment.bottomCenter,
