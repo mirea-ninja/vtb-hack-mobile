@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
-import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
 import 'package:vtb_hack_mobile/src/quiz/widgets/quiz_options_list_view.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
@@ -13,11 +11,13 @@ class QuizQuestionMoneyToInvestScreen extends StatefulWidget {
   QuizQuestionMoneyToInvestScreen({Key? key}) : super(key: key);
 
   @override
-  State<QuizQuestionMoneyToInvestScreen> createState() => _QuizQuestionMoneyToInvestScreenState();
+  State<QuizQuestionMoneyToInvestScreen> createState() =>
+      _QuizQuestionMoneyToInvestScreenState();
 }
 
-class _QuizQuestionMoneyToInvestScreenState extends State<QuizQuestionMoneyToInvestScreen> {
-  double _value = 1000;
+class _QuizQuestionMoneyToInvestScreenState
+    extends State<QuizQuestionMoneyToInvestScreen> {
+  double _value = 1;
 
   final List<int> _chartData = <int>[
     1000,
@@ -31,8 +31,11 @@ class _QuizQuestionMoneyToInvestScreenState extends State<QuizQuestionMoneyToInv
     500000
   ];
 
-  _saveBalance(double sum) {
-    Provider.of<InvestBalance>(context, listen: false).changeBalance(sum);
+  List<int> getCurrentInterval() {
+    return [
+      _chartData[_value.toInt()] ~/ 1000,
+      _chartData[_value.toInt() + 1] ~/ 1000
+    ];
   }
 
   @override
@@ -52,11 +55,13 @@ class _QuizQuestionMoneyToInvestScreenState extends State<QuizQuestionMoneyToInv
                       style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                           alignment: Alignment.centerLeft),
-                      onPressed: () {Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const GameHomeScreen()),
-                      );},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const GameHomeScreen()),
+                        );
+                      },
                       child: const Text(
                         "Пропустить",
                         style: TextStyle(color: Colors.white),
@@ -82,19 +87,33 @@ class _QuizQuestionMoneyToInvestScreenState extends State<QuizQuestionMoneyToInv
                   style:
                       TextStyle(color: Colors.white, fontSize: MySize.size14),
                 ),
-                SizedBox(height: 50,),
+                const Spacer(),
+                Center(
+                  child: Text(
+                    "от ${getCurrentInterval()[0]} до ${getCurrentInterval()[1]} тыс. ₽",
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 33,
+                      fontFamily: "Rubik",
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
                 SfSlider(
                   activeColor: Colors.white,
-                  inactiveColor: Colors.white70,
-                  min: _chartData.first,
-                  max: _chartData.last,
+                  inactiveColor: Colors.white,
+                  min: 0,
+                  max: 7,
                   value: _value,
+                  interval: 1,
                   showTicks: true,
-                  showLabels: true,
-                  enableTooltip: true,
-                  stepSize: 1000,
-                  minorTicksPerInterval: 100,
-                  onChanged: (dynamic value){
+                  showLabels: false,
+                  enableTooltip: false,
+                  stepSize: 1,
+                  onChanged: (dynamic value) {
                     setState(() {
                       _value = value;
                     });
@@ -104,7 +123,6 @@ class _QuizQuestionMoneyToInvestScreenState extends State<QuizQuestionMoneyToInv
                 FullWidthButton(
                   text: "Продолжить",
                   onPressed: () {
-                    _saveBalance(_value);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
