@@ -52,7 +52,7 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
                       style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                           alignment: Alignment.centerLeft),
-                      onPressed: () {},
+                      onPressed: () {Navigator.of(context).pop();},
                       child: const Text(
                         "Назад",
                         style: TextStyle(color: Colors.white),

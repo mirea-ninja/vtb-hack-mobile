@@ -52,7 +52,11 @@ class _QuizQuestionMoneyToInvestScreenState extends State<QuizQuestionMoneyToInv
                       style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                           alignment: Alignment.centerLeft),
-                      onPressed: () {},
+                      onPressed: () {Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const GameHomeScreen()),
+                      );},
                       child: const Text(
                         "Пропустить",
                         style: TextStyle(color: Colors.white),

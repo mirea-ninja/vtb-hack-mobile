@@ -36,6 +36,7 @@ class _QuizWhatDoYouWantScreenState extends State<QuizWhatDoYouWantScreen> {
       text: "Получить опыт",
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +54,9 @@ class _QuizWhatDoYouWantScreenState extends State<QuizWhatDoYouWantScreen> {
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
                             alignment: Alignment.centerLeft),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                         child: const Text(
                           "Назад",
                           style: TextStyle(color: Colors.white),
@@ -81,7 +84,7 @@ class _QuizWhatDoYouWantScreenState extends State<QuizWhatDoYouWantScreen> {
                   ),
                   SizedBox(height: MySize.size28),
                   Expanded(child: QuizOptionsListView(options: options)),
-                  // const Spacer(),
+                  SizedBox(height: MySize.size16),
                   FullWidthButton(
                     text: "Продолжить",
                     onPressed: () {
