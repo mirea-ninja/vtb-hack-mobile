@@ -39,7 +39,7 @@ class _QuizWhatMetodDoYouWantScreen
                       style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                           alignment: Alignment.centerLeft),
-                      onPressed: () {},
+                      onPressed: () {Navigator.of(context).pop();},
                       child: const Text(
                         "Назад",
                         style: TextStyle(color: Colors.white),
@@ -66,7 +66,7 @@ class _QuizWhatMetodDoYouWantScreen
                       TextStyle(color: Colors.white, fontSize: MySize.size14),
                 ),
                 SizedBox(height: MySize.size28),
-                QuizOptionsListView(options: options),
+                QuizOptionsListView(options: options, multiSelection: false,),
                 const Spacer(),
                 FullWidthButton(
                   text: "Продолжить",
