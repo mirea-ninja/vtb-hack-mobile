@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
+import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
 import 'package:vtb_hack_mobile/src/quiz/widgets/quiz_options_list_view.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
@@ -28,6 +30,10 @@ class _QuizQuestionMoneyToInvestScreenState extends State<QuizQuestionMoneyToInv
     300000,
     500000
   ];
+
+  _saveBalance(double sum) {
+    Provider.of<InvestBalance>(context, listen: false).changeBalance(sum);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +100,7 @@ class _QuizQuestionMoneyToInvestScreenState extends State<QuizQuestionMoneyToInv
                 FullWidthButton(
                   text: "Продолжить",
                   onPressed: () {
+                    _saveBalance(_value);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
