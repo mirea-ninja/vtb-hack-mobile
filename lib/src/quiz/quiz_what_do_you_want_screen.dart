@@ -18,7 +18,7 @@ class QuizWhatDoYouWantScreen extends StatefulWidget {
 class _QuizWhatDoYouWantScreenState extends State<QuizWhatDoYouWantScreen> {
   List<QuizOption> options = [
     QuizOption(
-      text: "Получение пассивной прибыли",
+      text: "Получать пассивную прибыль",
     ),
     QuizOption(
       text: "Накопить на крупные покупки",
@@ -27,13 +27,13 @@ class _QuizWhatDoYouWantScreenState extends State<QuizWhatDoYouWantScreen> {
       text: "Профессионально работать с инвестициями",
     ),
     QuizOption(
-      text: "Создать финансовую подушку",
+      text: "Создать финансовую подушку безопасности",
+    ),
+    QuizOption(
+      text: "Заработать на ежедневной торговле",
     ),
     QuizOption(
       text: "Хочу научиться инвестировать",
-    ),
-    QuizOption(
-      text: "Получить опыт",
     ),
   ];
 
@@ -70,7 +70,7 @@ class _QuizWhatDoYouWantScreenState extends State<QuizWhatDoYouWantScreen> {
                   ),
                   SizedBox(height: MySize.size24),
                   Text(
-                    "Что вы хотете получить инвестируя?",
+                    "Какие ваши инвестиционные цели?",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: MySize.size22,
@@ -78,7 +78,7 @@ class _QuizWhatDoYouWantScreenState extends State<QuizWhatDoYouWantScreen> {
                   ),
                   SizedBox(height: MySize.size16),
                   Text(
-                    "Возможность выбрать несколько ответов",
+                    "Можно выбрать несколько вариантов",
                     style:
                         TextStyle(color: Colors.white, fontSize: MySize.size14),
                   ),
