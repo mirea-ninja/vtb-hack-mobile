@@ -61,7 +61,7 @@ class _QuizQuestionMoneyToInvestScreenState
                         );
                       },
                       child: const Text(
-                        "Пропустить",
+                        "Назад",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
