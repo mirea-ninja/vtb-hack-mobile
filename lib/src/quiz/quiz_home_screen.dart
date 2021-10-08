@@ -19,7 +19,7 @@ class QuizHomeScreen extends StatelessWidget {
               children: [
                 SizedBox(height: MySize.size60),
                 Text(
-                  "Инвестируйте \nв свое \nбудущее".toUpperCase(),
+                  "Инвестируйте \nв свое \nбудущее!".toUpperCase(),
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: MySize.size36,
@@ -29,6 +29,10 @@ class QuizHomeScreen extends StatelessWidget {
                 const QuizParagraph(
                     text:
                         "Пройдите короткий опрос и получите готовые решения с высокой доходностью"),
+                SizedBox(height: MySize.size16),
+                const QuizParagraph(
+                    text:
+                        "Новый метод работы с инвестициями поможет вам быть уверенее в будущих сделках"),
                 const Spacer(),
                 FullWidthButton(
                   text: "Настроить профиль",

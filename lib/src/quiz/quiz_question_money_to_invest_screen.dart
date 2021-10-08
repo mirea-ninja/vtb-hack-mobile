@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
-import 'package:vtb_hack_mobile/src/quiz/widgets/quiz_options_list_view.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
-
-import 'models/quiz_option.dart';
 
 class QuizQuestionMoneyToInvestScreen extends StatefulWidget {
   QuizQuestionMoneyToInvestScreen({Key? key}) : super(key: key);
@@ -68,14 +65,14 @@ class _QuizQuestionMoneyToInvestScreenState
                       ),
                     ),
                     const Text(
-                      "6/7",
+                      "4/7",
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
                 ),
                 SizedBox(height: MySize.size24),
                 Text(
-                  "Сколько вы хотите инвестировать",
+                  "В месяц вы зарабатываете",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: MySize.size22,
@@ -83,7 +80,7 @@ class _QuizQuestionMoneyToInvestScreenState
                 ),
                 SizedBox(height: MySize.size16),
                 Text(
-                  "Вы начнете игру с начальным балансом",
+                  "Выберите подходящий вариант",
                   style:
                       TextStyle(color: Colors.white, fontSize: MySize.size14),
                 ),
