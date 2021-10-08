@@ -5,7 +5,8 @@ import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 class QuizOptionsListView extends StatefulWidget {
   final List<QuizOption> options;
 
-  const QuizOptionsListView({Key? key, required this.options}) : super(key: key);
+  const QuizOptionsListView({Key? key, required this.options})
+      : super(key: key);
 
   @override
   _QuizOptionsListViewState createState() => _QuizOptionsListViewState();
@@ -22,6 +23,14 @@ class _QuizOptionsListViewState extends State<QuizOptionsListView> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final oldCheckboxTheme = theme.checkboxTheme;
+
+    final newCheckBoxTheme = oldCheckboxTheme.copyWith(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+      fillColor: MaterialStateProperty.all(Colors.white),
+    );
+
     return ListView.builder(
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
@@ -34,42 +43,53 @@ class _QuizOptionsListViewState extends State<QuizOptionsListView> {
         return Container(
           margin: const EdgeInsets.only(top: 10.0),
           decoration: BoxDecoration(
-              color: Colors.white24,
-              border: Border.all(
-                color: Colors.white24,
-              ),
-              borderRadius: const BorderRadius.all(Radius.circular(20))
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0x19ffffff),
           ),
-          child: CheckboxListTile(
-              contentPadding: const EdgeInsets.all(0),
-              shape: const CircleBorder(),
-              controlAffinity: ListTileControlAffinity.leading,
-              title: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (item.title!.isNotEmpty)
+          child: Theme(
+            data: theme.copyWith(checkboxTheme: newCheckBoxTheme),
+            child: CheckboxListTile(
+                controlAffinity: ListTileControlAffinity.leading,
+                contentPadding: EdgeInsets.symmetric(vertical: MySize.size10!),
+                shape: const CircleBorder(),
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (item.title!.isNotEmpty)
+                      Text(
+                        item.title!,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: MySize.size16,
+                          fontFamily: "Rubik",
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    SizedBox(height: MySize.size10),
                     Text(
-                      item.title!,
+                      item.text,
                       style: TextStyle(
-                          fontSize: MySize.size26!,
-                          color: Colors.white),
+                        color: Colors.white,
+                        fontSize: MySize.size14,
+                      ),
                     ),
-                  Text(
-                    item.text,
-                    style: const TextStyle(color: Colors.white),
-                  )
-                ],
-              ),
-              subtitle: item.subtitle!.isNotEmpty
-                  ? Text(
-                item.subtitle!,
-                style: const TextStyle(color: Colors.white60),
-              )
-                  : null,
-              value: _isChecked[index],
-              onChanged: (value) => setState(() {
-                _isChecked[index] = value!;
-              })),
+                    SizedBox(height: MySize.size8),
+                  ],
+                ),
+                subtitle: item.subtitle!.isNotEmpty
+                    ? Opacity(
+                        opacity: 0.5,
+                        child: Text(
+                          item.subtitle!,
+                          style: const TextStyle(color: Colors.white60),
+                        ),
+                      )
+                    : null,
+                value: _isChecked[index],
+                onChanged: (value) => setState(() {
+                      _isChecked[index] = value!;
+                    })),
+          ),
         );
       },
     );

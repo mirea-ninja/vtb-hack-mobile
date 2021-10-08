@@ -78,6 +78,7 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
                   style:
                       TextStyle(color: Colors.white, fontSize: MySize.size14),
                 ),
+                SizedBox(height: MySize.size28),
                 QuizOptionsListView(options: options),
                 const Spacer(),
                 FullWidthButton(
@@ -85,7 +86,9 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => QuizQuestionMoneyToInvestScreen()),
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              QuizQuestionMoneyToInvestScreen()),
                     );
                   },
                 ),

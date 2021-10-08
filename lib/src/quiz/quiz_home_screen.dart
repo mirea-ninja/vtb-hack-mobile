@@ -20,18 +20,27 @@ class QuizHomeScreen extends StatelessWidget {
                 SizedBox(height: MySize.size60),
                 Text(
                   "Инвестируйте \nв свое \nбудущее".toUpperCase(),
-                  style:
-                      TextStyle(color: Colors.white, fontSize: MySize.size36, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: MySize.size36,
+                      fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: MySize.size48),
-                const QuizParagraph(text: "Пройдите короткий опрос и получите готовые решения с высокой доходностью"),
+                const QuizParagraph(
+                    text:
+                        "Пройдите короткий опрос и получите готовые решения с высокой доходностью"),
                 const Spacer(),
-                FullWidthButton(text: "Настроить профиль", onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const QuizQuestionRateExpScreen()),
-                  );
-                },),
+                FullWidthButton(
+                  text: "Настроить профиль",
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const QuizQuestionRateExpScreen()),
+                    );
+                  },
+                ),
               ],
             ),
           ),
