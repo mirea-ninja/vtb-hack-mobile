@@ -158,7 +158,7 @@ class GameHomeScreen extends StatelessWidget {
                                   Consumer<InvestBalance>(
                                     builder: (context, balance, child) {
                                       return Text(
-                                        "${balance.balance} Р",
+                                        "${balance.balance.toStringAsFixed(0)} Р",
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 26),
                                       );
