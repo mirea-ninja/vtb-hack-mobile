@@ -49,46 +49,47 @@ class _QuizOptionsListViewState extends State<QuizOptionsListView> {
           child: Theme(
             data: theme.copyWith(checkboxTheme: newCheckBoxTheme),
             child: CheckboxListTile(
-                controlAffinity: ListTileControlAffinity.leading,
-                contentPadding: EdgeInsets.symmetric(vertical: MySize.size10!),
-                shape: const CircleBorder(),
-                title: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (item.title != null)
-                      Text(
-                        item.title!,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: MySize.size16,
-                          fontFamily: "Rubik",
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    SizedBox(height: MySize.size10),
+              controlAffinity: ListTileControlAffinity.leading,
+              contentPadding: EdgeInsets.symmetric(vertical: MySize.size10!),
+              shape: const CircleBorder(),
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (item.title != null)
                     Text(
-                      item.text,
+                      item.title!,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: MySize.size14,
+                        fontSize: MySize.size16,
+                        fontFamily: "Rubik",
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
-                    SizedBox(height: MySize.size8),
-                  ],
-                ),
-                subtitle: item.subtitle != null
-                    ? Opacity(
-                        opacity: 0.5,
-                        child: Text(
-                          item.subtitle!,
-                          style: const TextStyle(color: Colors.white60),
-                        ),
-                      )
-                    : null,
-                value: _isChecked[index],
-                onChanged: (value) => setState(() {
-                      _isChecked[index] = value!;
-                    })),
+                  SizedBox(height: MySize.size10),
+                  Text(
+                    item.text,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: MySize.size14,
+                    ),
+                  ),
+                  SizedBox(height: MySize.size8),
+                ],
+              ),
+              subtitle: item.subtitle != null
+                  ? Opacity(
+                      opacity: 0.5,
+                      child: Text(
+                        item.subtitle!,
+                        style: const TextStyle(color: Colors.white60),
+                      ),
+                    )
+                  : null,
+              value: _isChecked[index],
+              onChanged: (value) => setState(() {
+                _isChecked[index] = value!;
+              }),
+            ),
           ),
         );
       },
