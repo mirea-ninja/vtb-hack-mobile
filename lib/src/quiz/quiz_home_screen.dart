@@ -29,6 +29,7 @@ class QuizHomeScreen extends StatelessWidget {
                 const QuizParagraph(
                     text:
                         "Пройдите короткий опрос и получите готовые решения с высокой доходностью"),
+                SizedBox(height: MySize.size16),
                 const QuizParagraph(
                     text:
                         "Новый метод работы с инвестициями поможет вам быть уверенее в будущих сделках"),
