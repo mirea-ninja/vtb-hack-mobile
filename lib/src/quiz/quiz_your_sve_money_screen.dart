@@ -2,19 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
-import 'package:vtb_hack_mobile/src/quiz/quiz_your_sve_money_screen.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
-class QuizQuestionMoneyToInvestScreen extends StatefulWidget {
-  QuizQuestionMoneyToInvestScreen({Key? key}) : super(key: key);
+class QuizYourSveMoneyScreen extends StatefulWidget {
+  QuizYourSveMoneyScreen({Key? key}) : super(key: key);
 
   @override
-  State<QuizQuestionMoneyToInvestScreen> createState() =>
-      _QuizQuestionMoneyToInvestScreenState();
+  State<QuizYourSveMoneyScreen> createState() => _QuizYourSveMoneyScreen();
 }
 
-class _QuizQuestionMoneyToInvestScreenState
-    extends State<QuizQuestionMoneyToInvestScreen> {
+class _QuizYourSveMoneyScreen extends State<QuizYourSveMoneyScreen> {
   double _value = 1;
 
   final List<int> _chartData = <int>[
@@ -66,14 +63,14 @@ class _QuizQuestionMoneyToInvestScreenState
                       ),
                     ),
                     const Text(
-                      "4/7",
+                      "5/7",
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
                 ),
                 SizedBox(height: MySize.size24),
                 Text(
-                  "В месяц вы зарабатываете",
+                  "Ваши сбережения",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: MySize.size22,
@@ -124,7 +121,7 @@ class _QuizQuestionMoneyToInvestScreenState
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => QuizYourSveMoneyScreen()),
+                          builder: (context) => const GameHomeScreen()),
                     );
                   },
                 ),
