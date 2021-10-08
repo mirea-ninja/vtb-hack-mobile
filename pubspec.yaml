@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
   sliding_up_panel: ^2.0.0+1
+  syncfusion_flutter_sliders: ^19.3.44
 
 dev_dependencies:
   flutter_test:

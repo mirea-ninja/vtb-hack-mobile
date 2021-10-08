@@ -11,6 +11,6 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     // Use MySize class for Vertical Rhythm
     MySize().init(context);
-    return const VideoTipsScreen();
+    return const QuizHomeScreen();
   }
 }
