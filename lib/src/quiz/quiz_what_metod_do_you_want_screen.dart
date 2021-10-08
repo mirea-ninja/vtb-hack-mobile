@@ -1,38 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
-import 'package:vtb_hack_mobile/src/quiz/quiz_what_do_you_want_screen.dart';
+import 'package:vtb_hack_mobile/src/quiz/quiz_question_money_to_invest_screen.dart';
 import 'package:vtb_hack_mobile/src/quiz/widgets/quiz_options_list_view.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
 import 'models/quiz_option.dart';
 
-class QuizQuestionRateExpScreen extends StatefulWidget {
-  const QuizQuestionRateExpScreen({Key? key}) : super(key: key);
+class QuizWhatMetodDoYouWantScreen extends StatefulWidget {
+  const QuizWhatMetodDoYouWantScreen({Key? key}) : super(key: key);
 
   @override
-  State<QuizQuestionRateExpScreen> createState() =>
-      _QuizQuestionRateExpScreenState();
+  State<QuizWhatMetodDoYouWantScreen> createState() =>
+      _QuizWhatMetodDoYouWantScreen();
 }
 
-class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
+class _QuizWhatMetodDoYouWantScreen
+    extends State<QuizWhatMetodDoYouWantScreen> {
   List<QuizOption> options = [
-    QuizOption(
-      text: "Вы познакомитесь с базовыми терминами и пройдете быстрое обучение",
-      title: "Новичок",
-      subtitle:
-          "Вы познакомитесь с базовыми терминами и пройдете быстрое обучение",
-    ),
-    QuizOption(
-      text:
-          "Вы уже ранее занимались инвестициями и знакомы с основыми инструметами инвестора",
-      title: "Опытный",
-      subtitle: "Больше возможностей в приложении",
-    ),
-    QuizOption(
-      text: "Вам нужнен полный доступ ко всем инструментам",
-      title: "Эксперт",
-      subtitle: "Никаких ограничений в ваших инвестициях",
-    ),
+    QuizOption(text: "Получение небольшого дохода без риска"),
+    QuizOption(text: "Получать средний доход использую незначительный риск"),
+    QuizOption(text: "Высокий риск, высокий доход"),
   ];
 
   @override
@@ -59,14 +46,14 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
                       ),
                     ),
                     const Text(
-                      "1/7",
+                      "3/7",
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
                 ),
                 SizedBox(height: MySize.size24),
                 Text(
-                  "Оцените свой опыт в \nинвестициях",
+                  "Какой метод инвестирования вам подходит?",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: MySize.size22,
@@ -74,7 +61,7 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
                 ),
                 SizedBox(height: MySize.size16),
                 Text(
-                  "Настройки можно будет поменять в настройках приложения",
+                  "Возможность выбрать один вариант",
                   style:
                       TextStyle(color: Colors.white, fontSize: MySize.size14),
                 ),
@@ -88,7 +75,7 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              const QuizWhatDoYouWantScreen()),
+                              QuizQuestionMoneyToInvestScreen()),
                     );
                   },
                 ),
