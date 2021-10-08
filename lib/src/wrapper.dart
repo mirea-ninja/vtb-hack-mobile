@@ -11,6 +11,15 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     // Use MySize class for Vertical Rhythm
     MySize().init(context);
-    return const VideoTipsScreen();
+    return VideoTipsScreen(
+      buttonText: 'Завершить год',
+      infoText:
+          'Мы расскажем, как найти баланс в инвестициях и минимизировать риски.',
+      infoTitle: 'Как работает рынок, и почему это выгодно?',
+      onButtonClick: () {},
+      text: 'нет текста',
+      videoUrl:
+          'https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4',
+    );
   }
 }
