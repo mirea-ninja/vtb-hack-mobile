@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
 class GameHomeScreen extends StatelessWidget {
@@ -153,10 +155,14 @@ class GameHomeScreen extends StatelessWidget {
                                         color: Colors.white, fontSize: 12),
                                   ),
                                   Spacer(),
-                                  Text(
-                                    "0 Р",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 26),
+                                  Consumer<InvestBalance>(
+                                    builder: (context, balance, child) {
+                                      return Text(
+                                        "${balance.balance.toStringAsFixed(0)} Р",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 26),
+                                      );
+                                    },
                                   ),
                                 ],
                               )),
