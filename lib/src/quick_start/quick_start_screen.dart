@@ -17,7 +17,7 @@ class QuickStartScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: MySize.size30!, vertical: MySize.size40!),
+                horizontal: MySize.size30!, vertical: MySize.size30!),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

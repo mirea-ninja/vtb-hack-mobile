@@ -172,11 +172,13 @@ class _VideoTipsScreenState extends State<VideoTipsScreen> {
                       isPlaying: _controller.value.isPlaying,
                     ),
                     SizedBox(height: MySize.size20),
+                    const Spacer(),
                     FullWidthButton(
                         text: widget.buttonText,
                         onPressed: () {
                           widget.onButtonClick();
                         }),
+                    SizedBox(height: MySize.size30),
                   ],
                 ),
               ),
