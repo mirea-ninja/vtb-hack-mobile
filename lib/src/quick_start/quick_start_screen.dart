@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
 import 'package:vtb_hack_mobile/src/quick_start/widgets/quick_start_label.dart';
+import 'package:vtb_hack_mobile/src/video_tips/video_tips_screen.dart';
 
 import '../settings/size_config.dart';
 
@@ -106,11 +107,36 @@ class QuickStartScreen extends StatelessWidget {
                 FullWidthButton(
                     text: 'Приступить',
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const GameHomeScreen()),
-                      );
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => VideoTipsScreen(
+                                infoTitle:
+                                    'Почему каждому важно начать инвестировать',
+                                infoText:
+                                    'Мы расскажем, как сделать первые шаги в инвестициях и минимизировать риски',
+                                buttonText: 'Продолжить',
+                                onButtonClick: () {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const GameHomeScreen()),
+                                      (Route<dynamic> route) => false);
+                                },
+                                onSkipClick: () {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const GameHomeScreen()),
+                                      (Route<dynamic> route) => false);
+                                },
+                                text: '',
+                                videoUrl:
+                                    'https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4'),
+                          ),
+                          (Route<dynamic> route) => false);
                     }),
               ],
             )),

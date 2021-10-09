@@ -75,10 +75,11 @@ class _QuizPortfelScreen extends State<QuizPortfelScreen> {
                   FullWidthButton(
                     text: "Завершить",
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const QuickStartScreen()),
+                        (Route<dynamic> route) => false,
                       );
                     },
                   ),
