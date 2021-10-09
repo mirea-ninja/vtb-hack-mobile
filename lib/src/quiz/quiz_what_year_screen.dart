@@ -15,13 +15,25 @@ class QuizWhatYearScreen extends StatefulWidget {
 class _QuizWhatYearScreen extends State<QuizWhatYearScreen> {
   double _value = 1;
 
-  final List<int> _chartData = <int>[1, 3, 5, 10];
+  final List<int> _chartData = <int>[1, 2, 3, 4, 5];
 
-  List<int> getCurrentInterval() {
-    return [
-      _chartData[_value.toInt()] ~/ 1000,
-      _chartData[_value.toInt() + 1] ~/ 1000
-    ];
+  int getCurrentInterval() {
+    return _chartData[_value.toInt()];
+  }
+
+  String getPluralFormText(int year) {
+    switch (year) {
+      case 1:
+        return 'год';
+      case 2:
+      case 3:
+      case 4:
+        return 'года';
+      case 5:
+        return 'лет';
+      default:
+        return 'год';
+    }
   }
 
   @override
@@ -76,7 +88,8 @@ class _QuizWhatYearScreen extends State<QuizWhatYearScreen> {
                 const Spacer(),
                 Center(
                   child: Text(
-                    "${getCurrentInterval()[1]} год",
+                    "${getCurrentInterval()} " +
+                        getPluralFormText(getCurrentInterval()),
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 33,
@@ -92,7 +105,7 @@ class _QuizWhatYearScreen extends State<QuizWhatYearScreen> {
                   activeColor: Colors.white,
                   inactiveColor: Colors.white,
                   min: 0,
-                  max: 3,
+                  max: 4,
                   value: _value,
                   interval: 1,
                   showTicks: true,
