@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:vtb_hack_mobile/src/game/widgets/bottom_modals/game_finished_modal.dart';
 import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
 
 class GameSlider extends StatefulWidget {
@@ -41,16 +42,28 @@ class _GameSliderState extends State<GameSlider> {
     setState(() {
       _play = !_play;
     });
+    var investProvider =  Provider.of<InvestBalance>(context, listen: false);
+
     if (_play) {
-      _panelcontroller.open();
-      Timer.periodic(Duration(seconds: 1), (Timer timer) {
+      //_panelcontroller.open();
+      Timer.periodic(Duration(milliseconds: 10), (Timer timer) {
+        investProvider.changePortfolioValue(random.nextInt(100).toDouble());
+        investProvider.incDay();
         if (_play == false) {
           timer.cancel();
         }
-        Provider.of<InvestBalance>(context, listen: false).changeBalance(random.nextInt(100).toDouble());
+        if (investProvider.dayCounter >= 365) {
+          timer.cancel();
+                  showModalBottomSheet<void>(
+                    context: context,
+                    isDismissible: false,
+                    enableDrag: false,
+                    builder: (BuildContext context) {
+                      return GameFinishedModal();
+                    },
+                  );
+          }
       });
-    } else {
-      _panelcontroller.close();
     }
   }
 
@@ -67,6 +80,8 @@ Widget build(BuildContext context) {
       alignment: Alignment.topCenter,
       children: <Widget>[
         SlidingUpPanel(
+          onPanelOpened: _togglePlay,
+          onPanelClosed: _togglePlay,
           controller: _panelcontroller,
           maxHeight: _panelHeightOpen,
           minHeight: _panelHeightClosed,
@@ -86,22 +101,24 @@ Widget build(BuildContext context) {
 
         // the fab
         Positioned.fill(
-          bottom: _fabHeight - 10,
+          bottom: _fabHeight - 55,
           child: Align(
             alignment: Alignment.bottomCenter,
             child: FloatingActionButton(
+              elevation: 0,
               child: GestureDetector(
-                onTap: _togglePlay,
-                child: _play ? Icon(
-                  Icons.pause,
-                  color: Theme
-                      .of(context)
-                      .primaryColor,
-                ) : Icon(
-                  Icons.play_arrow,
-                  color: Theme
-                      .of(context)
-                      .primaryColor,
+                // onTap: _panelcontroller.open(),
+                child: Consumer<InvestBalance>(
+                  builder: (context, value, child) {
+                    return Transform.rotate(
+                      angle: value.dayCounter * 10, //set the angel
+                      child: Icon(Icons.access_time,size: 40,
+                        color: Theme
+                            .of(context)
+                            .primaryColor,
+                      ),
+                    );
+                  }
                 ),
               ),
               onPressed: () {},
@@ -173,8 +190,21 @@ Widget _panel(ScrollController sc) {
           SizedBox(
             height: 36.0,
           ),
-          Text(
-              "Здесь анимированный график и анимация крутящихся часов с датой"),
+          Center(
+            child: Text(
+                "Здесь классный анимированный график"),
+          ),
+          SizedBox(
+            height: 24,
+          ),
+          Center(
+            child: Consumer<InvestBalance>(
+              builder: (context, value, child) {
+                return Text(
+                    "День ${value.dayCounter}", style: TextStyle(fontSize: 30),);
+              }
+            ),
+          ),
           SizedBox(
             height: 24,
           ),

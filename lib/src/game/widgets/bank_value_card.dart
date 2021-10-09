@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
+import 'package:provider/provider.dart';
 
 class BankValueCard extends StatelessWidget {
   const BankValueCard({Key? key}) : super(key: key);
@@ -115,14 +117,18 @@ class BankValueCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 14),
-                  const Text(
-                    "33 379 588 ₽",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontFamily: "Rubik",
-                      fontWeight: FontWeight.w500,
-                    ),
+                  Consumer<InvestBalance>(
+                    builder: (context, value, child) {
+                      return Text(
+                        "${value.portfolioValue.toStringAsFixed(2)} ₽",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontFamily: "Rubik",
+                          fontWeight: FontWeight.w500,
+                        ),
+                      );
+                    }
                   ),
                   const SizedBox(height: 5),
                   Row(
