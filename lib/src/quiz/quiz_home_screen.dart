@@ -17,18 +17,14 @@ class QuizHomeScreen extends StatelessWidget {
           children: [
             const Align(
               alignment: Alignment.topLeft,
-              child: Positioned.fill(
-                child: Image(
-                  image: AssetImage('assets/images/background_2.png'),
-                ),
+              child: Image(
+                image: AssetImage('assets/images/background_2.png'),
               ),
             ),
             const Align(
               alignment: Alignment(1.0, 0.6),
-              child: Positioned.fill(
-                child: Image(
-                  image: AssetImage('assets/images/background_1.png'),
-                ),
+              child: Image(
+                image: AssetImage('assets/images/background_1.png'),
               ),
             ),
             Padding(
