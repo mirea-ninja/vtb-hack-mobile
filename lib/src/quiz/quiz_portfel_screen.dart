@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
-import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
 import 'package:vtb_hack_mobile/src/quick_start/quick_start_screen.dart';
 import 'package:vtb_hack_mobile/src/quiz/widgets/quiz_options_list_view.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
@@ -64,7 +63,7 @@ class _QuizPortfelScreen extends State<QuizPortfelScreen> {
                         TextStyle(color: Colors.white, fontSize: MySize.size14),
                   ),
                   SizedBox(height: MySize.size28),
-                  Expanded(child: QuizOptionsListView(options: options)),
+                  Expanded(child: QuizOptionsListView(options: options, multiSelection: false,)),
                   SizedBox(height: MySize.size16),
                   Text(
                     "Аналитики подобрали вам бесплатные портфели, подходящие под ваш инвестиционный профиль. Первое время вы будете получать рекомендации от личного финансового ассистента",
