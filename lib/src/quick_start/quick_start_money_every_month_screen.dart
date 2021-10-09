@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/easy_start/easy_start_screen.dart';
+import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
 import 'package:vtb_hack_mobile/src/providers/money_value.dart';
 import 'package:vtb_hack_mobile/src/quiz/widgets/money_value_changer.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
@@ -108,11 +109,40 @@ class QuickStartMoneyEveryMonthScreen extends StatelessWidget {
               const SizedBox(height: 12),
               const MoneyValueChanger(goalIndex: 3),
               const Spacer(),
-              FullWidthButton(text: 'Продолжить', onPressed: () {Navigator.push(
-                context,
-                CupertinoPageRoute(
-                    builder: (context) => const EasyStartScreen()),
-              );})
+              FullWidthButton(text: 'Продолжить', onPressed: () {
+                if (Provider.of<InvestBalance>(context, listen: false).balance > 0) {
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => const EasyStartScreen()),
+                  );
+                } else {
+                  showDialog<void>(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Не осталось денег для инвестиций'),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: const <Widget>[
+                              Text('Пожалуйста решите сколько вы хотите инвестировать'),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('ОК'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+              })
             ],
           ),
         ),
