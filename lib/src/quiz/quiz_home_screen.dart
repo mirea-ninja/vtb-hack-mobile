@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/quiz/quiz_question_rate_exp_screen.dart';
-import 'package:vtb_hack_mobile/src/quiz/widgets/image_fade_animation.dart';
 import 'package:vtb_hack_mobile/src/quiz/widgets/quiz_paragraph.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
@@ -39,10 +39,12 @@ class QuizHomeScreen extends StatelessWidget {
                   SizedBox(height: MySize.size60),
                   Text(
                     "Инвестируйте \nв свое \nбудущее!".toUpperCase(),
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: MySize.size36,
-                        fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 36,
+                      fontFamily: "Rubik",
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                   SizedBox(height: MySize.size48),
                   const QuizParagraph(

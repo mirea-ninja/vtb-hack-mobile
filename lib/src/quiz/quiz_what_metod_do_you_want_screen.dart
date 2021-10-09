@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/quiz/quiz_question_money_to_invest_screen.dart';
@@ -78,7 +79,7 @@ class _QuizWhatMetodDoYouWantScreen
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
+                      CupertinoPageRoute(
                           builder: (context) =>
                               QuizQuestionMoneyToInvestScreen()),
                     );

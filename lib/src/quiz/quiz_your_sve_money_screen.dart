@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
-import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
 import 'package:vtb_hack_mobile/src/quiz/quiz_what_year_screen.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
@@ -117,7 +117,7 @@ class _QuizYourSveMoneyScreen extends State<QuizYourSveMoneyScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
+                      CupertinoPageRoute(
                           builder: (context) => QuizWhatYearScreen()),
                     );
                   },

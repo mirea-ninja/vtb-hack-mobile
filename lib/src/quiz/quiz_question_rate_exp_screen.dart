@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/quiz/quiz_what_do_you_want_screen.dart';
@@ -90,7 +91,7 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
+                      CupertinoPageRoute(
                           builder: (context) =>
                               const QuizWhatDoYouWantScreen()),
                     );

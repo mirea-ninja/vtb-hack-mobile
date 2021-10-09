@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
-import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
 import 'package:vtb_hack_mobile/src/quiz/quiz_portfel_screen.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
@@ -120,7 +120,7 @@ class _QuizWhatYearScreen extends State<QuizWhatYearScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
+                      CupertinoPageRoute(
                           builder: (context) => QuizPortfelScreen()),
                     );
                   },
