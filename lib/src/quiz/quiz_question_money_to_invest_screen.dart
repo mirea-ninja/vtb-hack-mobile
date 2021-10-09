@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
@@ -118,7 +119,7 @@ class _QuizQuestionMoneyToInvestScreenState
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
+                      CupertinoPageRoute(
                           builder: (context) => QuizYourSveMoneyScreen()),
                     );
                   },
