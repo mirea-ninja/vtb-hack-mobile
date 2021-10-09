@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vtb_hack_mobile/src/easy_start/models/stocks_model.dart';
+import 'package:vtb_hack_mobile/src/easy_start/widgets/bonds_listview.dart';
 import 'package:vtb_hack_mobile/src/easy_start/widgets/recommends_card.dart';
 import 'package:vtb_hack_mobile/src/easy_start/widgets/stocks_listview.dart';
 import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
@@ -37,6 +38,34 @@ class EasyStartScreen extends StatelessWidget {
         price: 631.00,
         percentages: -63.24,
         image: Image.asset('assets/images/rosneft_logo.png')),
+  ];
+
+  final List<StocksModel> bonds = [
+    StocksModel(
+        title: 'ПИК БО-П03',
+        price: 1040.80,
+        percentages: 8.47,
+        image: Image.asset('assets/images/pik_logo.png')),
+    StocksModel(
+        title: 'КАМАЗ БОП3',
+        price: 705.20,
+        percentages: 9.03,
+        image: Image.asset('assets/images/kamaz_logo.png')),
+    StocksModel(
+        title: 'МосОб35016',
+        price: 960.24,
+        percentages: 7.74,
+        image: Image.asset('assets/images/mos_logo.png')),
+    StocksModel(
+        title: 'АЛЬФА-Б2Р7',
+        price: 1011.00,
+        percentages: 7.32,
+        image: Image.asset('assets/images/alpha_logo.png')),
+    StocksModel(
+        title: 'ИКС5Фин2Р1',
+        price: 996.01,
+        percentages: 8.15,
+        image: Image.asset('assets/images/x5_logo.png')),
   ];
 
   @override
@@ -124,6 +153,36 @@ class EasyStartScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 17),
                 StocksList(stocks: stocks),
+                const SizedBox(height: 44),
+                const CircleNumberIcon(number: 2),
+                const SizedBox(height: 20),
+                const Text(
+                  "Дайте деньги компании или государству в долг под процент",
+                  style: TextStyle(
+                    color: Color(0xff222222),
+                    fontSize: 18,
+                    fontFamily: "Rubik",
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 15),
+                const Text(
+                  "Мы подобрали 5 облигации популярные у инвесторов",
+                  style: TextStyle(
+                    color: Color(0xff222222),
+                    fontSize: 14,
+                  ),
+                ),
+                const SizedBox(height: 15),
+                const Text(
+                  "Выберите 3 облигации:",
+                  style: TextStyle(
+                    color: Color(0xffababab),
+                    fontSize: 14,
+                  ),
+                ),
+                const SizedBox(height: 17),
+                BondsList(bonds: bonds),
               ],
             ),
           ),
