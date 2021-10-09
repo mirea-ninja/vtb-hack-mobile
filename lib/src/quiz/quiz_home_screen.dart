@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/quiz/quiz_question_rate_exp_screen.dart';
@@ -39,7 +40,7 @@ class QuizHomeScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
+                      CupertinoPageRoute(
                           builder: (context) =>
                               const QuizQuestionRateExpScreen()),
                     );

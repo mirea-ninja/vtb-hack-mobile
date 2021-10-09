@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/quick_start/quick_start_screen.dart';
@@ -63,7 +64,11 @@ class _QuizPortfelScreen extends State<QuizPortfelScreen> {
                         TextStyle(color: Colors.white, fontSize: MySize.size14),
                   ),
                   SizedBox(height: MySize.size28),
-                  Expanded(child: QuizOptionsListView(options: options, multiSelection: false,)),
+                  Expanded(
+                      child: QuizOptionsListView(
+                    options: options,
+                    multiSelection: false,
+                  )),
                   SizedBox(height: MySize.size16),
                   Text(
                     "Аналитики подобрали вам бесплатные портфели, подходящие под ваш инвестиционный профиль. Первое время вы будете получать рекомендации от личного финансового ассистента",
@@ -76,7 +81,7 @@ class _QuizPortfelScreen extends State<QuizPortfelScreen> {
                     onPressed: () {
                       Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(
+                        CupertinoPageRoute(
                             builder: (context) => const QuickStartScreen()),
                         (Route<dynamic> route) => false,
                       );
