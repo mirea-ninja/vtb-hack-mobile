@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class MoneyValue with ChangeNotifier {
   List<int> goalsValues = [0, 0, 0, 0];
-  double _maxBalance = 70000;
+  double _maxBalance = 10000;
 
   set maxBalance(double value) {
     _maxBalance = value;

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vtb_hack_mobile/src/easy_start/widgets/recommends_card.dart';
+import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
 import 'widgets/circle_number_icon.dart';
@@ -9,6 +11,7 @@ class EasyStartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final investProvider = Provider.of<InvestBalance>(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -40,8 +43,8 @@ class EasyStartScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 13),
-              const Text(
-                "Вы готовы \nинвестировать 10 000₽\n",
+              Text(
+                "Вы готовы \nинвестировать ${investProvider.balance.toStringAsFixed(0)}\n",
                 style: TextStyle(
                   color: Color(0xff222222),
                   fontSize: 25,

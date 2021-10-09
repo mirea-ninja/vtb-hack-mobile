@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
-import 'package:vtb_hack_mobile/src/game/game_landing_screen.dart';
+import 'package:vtb_hack_mobile/src/easy_start/easy_start_screen.dart';
 import 'package:vtb_hack_mobile/src/providers/money_value.dart';
 import 'package:vtb_hack_mobile/src/quiz/widgets/money_value_changer.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
-import 'package:provider/provider.dart';
 
 class QuickStartMoneyEveryMonthScreen extends StatelessWidget {
   const QuickStartMoneyEveryMonthScreen({Key? key}) : super(key: key);
@@ -111,7 +111,7 @@ class QuickStartMoneyEveryMonthScreen extends StatelessWidget {
               FullWidthButton(text: 'Продолжить', onPressed: () {Navigator.push(
                 context,
                 CupertinoPageRoute(
-                    builder: (context) => const GameLandingScreen()),
+                    builder: (context) => const EasyStartScreen()),
               );})
             ],
           ),
