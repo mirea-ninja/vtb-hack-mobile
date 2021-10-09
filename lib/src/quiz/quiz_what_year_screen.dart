@@ -54,11 +54,7 @@ class _QuizWhatYearScreen extends State<QuizWhatYearScreen> {
                           padding: EdgeInsets.zero,
                           alignment: Alignment.centerLeft),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const GameHomeScreen()),
-                        );
+                        Navigator.of(context).pop();
                       },
                       child: const Text(
                         "Назад",
