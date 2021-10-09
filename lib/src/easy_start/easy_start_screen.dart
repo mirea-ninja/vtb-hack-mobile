@@ -6,7 +6,10 @@ import 'package:vtb_hack_mobile/src/easy_start/models/stocks_model.dart';
 import 'package:vtb_hack_mobile/src/easy_start/widgets/bonds_listview.dart';
 import 'package:vtb_hack_mobile/src/easy_start/widgets/recommends_card.dart';
 import 'package:vtb_hack_mobile/src/easy_start/widgets/stocks_listview.dart';
+import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
 import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
+import 'package:vtb_hack_mobile/src/providers/money_value.dart';
+import 'package:vtb_hack_mobile/src/providers/stock_portfolio.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
 import 'widgets/circle_number_icon.dart';
@@ -69,6 +72,11 @@ class EasyStartScreen extends StatelessWidget {
         percentages: 8.15,
         image: Image.asset('assets/images/x5_logo.png')),
   ];
+
+  double _getCurrentBalance(context) {
+    return Provider.of<MoneyValue>(context, listen: false).investBalance -
+        Provider.of<StocksPortfolio>(context, listen: false).getStocksPrice();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -234,10 +242,10 @@ class EasyStartScreen extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const Text(
-                  "2 445, 22 ₽",
+                Text(
+                  _getCurrentBalance(context).toStringAsFixed(2) + "₽",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 39,
                     fontFamily: "Rubik",
@@ -255,7 +263,17 @@ class EasyStartScreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 FullWidthButton(
-                    text: 'Использовать стратегию', onPressed: () {})
+                    text: 'Использовать стратегию',
+                    onPressed: () {
+                      Provider.of<MoneyValue>(context, listen: false)
+                          .investBalance = _getCurrentBalance(context);
+
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const GameHomeScreen()),
+                          (Route<dynamic> route) => false);
+                    })
               ],
             ),
           ),

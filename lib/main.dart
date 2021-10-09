@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
 import 'package:vtb_hack_mobile/src/providers/money_value.dart';
+import 'package:vtb_hack_mobile/src/providers/stock_portfolio.dart';
 import 'package:vtb_hack_mobile/src/wrapper.dart';
 
 void main() {
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => MoneyValue(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => StocksPortfolio(),
         ),
       ],
       child: MaterialApp(

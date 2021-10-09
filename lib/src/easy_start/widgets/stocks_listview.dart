@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vtb_hack_mobile/src/easy_start/models/stocks_model.dart';
+import 'package:vtb_hack_mobile/src/providers/stock_portfolio.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
 class StocksList extends StatefulWidget {
@@ -94,13 +96,28 @@ class _StocksListState extends State<StocksList> {
                 ),
                 value: _isChecked[index],
                 onChanged: (value) => setState(() {
-                  _isChecked[index] = value!;
+                  if (_isChecked
+                              .where((item) => item == true)
+                              .toList()
+                              .length ==
+                          3 &&
+                      value!) {
+                  } else {
+                    _isChecked[index] = value!;
+                    if (value == true) {
+                      Provider.of<StocksPortfolio>(context, listen: false)
+                          .addStock(widget.stocks[index]);
+                    } else {
+                      Provider.of<StocksPortfolio>(context, listen: false)
+                          .removeStock(widget.stocks[index]);
+                    }
+                  }
                 }),
               ),
             ),
             if (index != widget.stocks.length - 1)
               Padding(
-                padding: EdgeInsets.only(right: 23),
+                padding: const EdgeInsets.only(right: 23),
                 child: Container(
                   width: 251,
                   height: 1,

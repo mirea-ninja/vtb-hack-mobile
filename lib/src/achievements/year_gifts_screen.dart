@@ -5,6 +5,8 @@ import 'package:vtb_hack_mobile/src/achievements/models/gift_model.dart';
 import 'package:vtb_hack_mobile/src/achievements/year_achievements_screen.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 
+import 'models/gift_list_tile.dart';
+
 class YearGiftsScreen extends StatelessWidget {
   YearGiftsScreen({Key? key}) : super(key: key);
 
@@ -138,7 +140,7 @@ class YearGiftsScreen extends StatelessWidget {
                     return Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          //GiftListTile(gift: gifts[index]),
+                          GiftListTile(gift: gifts[index]),
                           if (index != gifts.length - 1)
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 13),
