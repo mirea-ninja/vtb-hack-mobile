@@ -58,30 +58,30 @@ class _VideoTipsScreenState extends State<VideoTipsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            FutureBuilder(
-              future: _initializeVideoPlayerFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  // If the VideoPlayerController has finished initialization, use
-                  // the data it provides to limit the aspect ratio of the video.
-                  return SizedBox(
-                    child: VideoPlayer(_controller),
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height - 400,
-                  );
-                } else {
-                  // If the VideoPlayerController is still initializing, show a
-                  // loading spinner.
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
-            Padding(
+      body: Stack(
+        children: [
+          FutureBuilder(
+            future: _initializeVideoPlayerFuture,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                // If the VideoPlayerController has finished initialization, use
+                // the data it provides to limit the aspect ratio of the video.
+                return SizedBox(
+                  child: VideoPlayer(_controller),
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height - 300,
+                );
+              } else {
+                // If the VideoPlayerController is still initializing, show a
+                // loading spinner.
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
+          SafeArea(
+            child: Padding(
               padding: EdgeInsets.all(MySize.size12!),
               child: Row(
                 children: [
@@ -104,65 +104,65 @@ class _VideoTipsScreenState extends State<VideoTipsScreen> {
                 ],
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 418,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x267e7e7e),
-                      blurRadius: 250,
-                      offset: Offset(0, 4),
-                    ),
-                  ],
-                  color: Color(0xff225ad6),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(MySize.size30!),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: MySize.size20,
-                      ),
-                      Text(
-                        widget.infoTitle,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 19,
-                          fontFamily: "Rubik",
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      SizedBox(
-                        height: MySize.size10,
-                      ),
-                      Text(
-                        widget.infoText,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                        ),
-                      ),
-                      SizedBox(height: MySize.size20),
-                      VideoControllers(),
-                      SizedBox(height: MySize.size20),
-                      FullWidthButton(
-                          text: widget.buttonText,
-                          onPressed: () {
-                            widget.onButtonClick();
-                          }),
-                    ],
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: 418,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x267e7e7e),
+                    blurRadius: 250,
+                    offset: Offset(0, 4),
                   ),
+                ],
+                color: Color(0xff225ad6),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(MySize.size30!),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: MySize.size20,
+                    ),
+                    Text(
+                      widget.infoTitle,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 19,
+                        fontFamily: "Rubik",
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(
+                      height: MySize.size10,
+                    ),
+                    Text(
+                      widget.infoText,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                    ),
+                    SizedBox(height: MySize.size20),
+                    VideoControllers(),
+                    SizedBox(height: MySize.size20),
+                    FullWidthButton(
+                        text: widget.buttonText,
+                        onPressed: () {
+                          widget.onButtonClick();
+                        }),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
