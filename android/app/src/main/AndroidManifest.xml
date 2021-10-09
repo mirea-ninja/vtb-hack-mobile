@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="the.boring.developers.vtb_hack_mobile">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="vtb_hack_mobile"
         android:icon="@mipmap/ic_launcher">

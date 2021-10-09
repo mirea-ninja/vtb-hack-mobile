@@ -3,7 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
 class VideoControllers extends StatefulWidget {
-  VideoControllers({Key? key}) : super(key: key);
+  VideoControllers(
+      {Key? key, required this.onPlayClick, required this.isPlaying})
+      : super(key: key);
+
+  final Function onPlayClick;
+  bool isPlaying = true;
 
   @override
   _VideoControllersState createState() => _VideoControllersState();
@@ -33,9 +38,18 @@ class _VideoControllersState extends State<VideoControllers> {
             children: [
               IconButton(
                 icon: SvgPicture.asset(
-                  'assets/icons/play.svg',
+                  widget.isPlaying
+                      ? 'assets/icons/pause.svg'
+                      : 'assets/icons/play.svg',
+                  width: 21,
+                  height: 21,
                 ),
-                onPressed: null,
+                onPressed: () {
+                  setState(() {
+                    widget.isPlaying = !widget.isPlaying;
+                    widget.onPlayClick();
+                  });
+                },
               ),
               const Text(
                 "4:43",

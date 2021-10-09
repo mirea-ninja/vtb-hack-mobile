@@ -45,6 +45,17 @@ class _VideoTipsScreenState extends State<VideoTipsScreen> {
 
     // Use the controller to loop the video.
     _controller.setLooping(false);
+    _controller.play();
+    _controller.addListener(() {
+      setState(() {
+        if (!_controller.value.isPlaying &&
+            _controller.value.isInitialized &&
+            (_controller.value.duration == _controller.value.position)) {
+          //Video Completed//
+          setState(() {});
+        }
+      });
+    });
 
     super.initState();
   }
@@ -150,7 +161,16 @@ class _VideoTipsScreenState extends State<VideoTipsScreen> {
                       ),
                     ),
                     SizedBox(height: MySize.size20),
-                    VideoControllers(),
+                    VideoControllers(
+                      onPlayClick: () {
+                        if (_controller.value.isPlaying) {
+                          _controller.pause();
+                        } else {
+                          _controller.play();
+                        }
+                      },
+                      isPlaying: _controller.value.isPlaying,
+                    ),
                     SizedBox(height: MySize.size20),
                     FullWidthButton(
                         text: widget.buttonText,
