@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
 import 'package:vtb_hack_mobile/src/providers/money_value.dart';
 
 class MoneyValueChanger extends StatelessWidget {
@@ -7,6 +8,10 @@ class MoneyValueChanger extends StatelessWidget {
       : super(key: key);
 
   final int goalIndex;
+
+  _setInvestBalance(double value) {
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +30,7 @@ class MoneyValueChanger extends StatelessWidget {
           onPressed: () {
             Provider.of<MoneyValue>(context, listen: false)
                 .changeGoalsValues(goalIndex, -10000);
+            Provider.of<InvestBalance>(context, listen: false).balance = Provider.of<MoneyValue>(context, listen: false).investBalance;
           },
           child: const Text(
             "-",
@@ -85,6 +91,8 @@ class MoneyValueChanger extends StatelessWidget {
           onPressed: () {
             Provider.of<MoneyValue>(context, listen: false)
                 .changeGoalsValues(goalIndex, 10000);
+            Provider.of<InvestBalance>(context, listen: false).balance = Provider.of<MoneyValue>(context, listen: false).investBalance;
+
           },
           child: const Text(
             "+",

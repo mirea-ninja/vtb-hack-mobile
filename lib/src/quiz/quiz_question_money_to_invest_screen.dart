@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
+import 'package:vtb_hack_mobile/src/providers/money_value.dart';
 import 'package:vtb_hack_mobile/src/quiz/quiz_your_sve_money_screen.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
@@ -17,7 +19,7 @@ class _QuizQuestionMoneyToInvestScreenState
     extends State<QuizQuestionMoneyToInvestScreen> {
   double _value = 1;
 
-  final List<int> _chartData = <int>[
+  final List<double> _chartData = <double>[
     1000,
     10000,
     20000,
@@ -107,10 +109,13 @@ class _QuizQuestionMoneyToInvestScreenState
                   showLabels: false,
                   enableTooltip: false,
                   stepSize: 1,
-                  onChanged: (dynamic value) {
+                  onChanged: (value) {
+                    int index = (value as double).toInt();
                     setState(() {
                       _value = value;
                     });
+                    Provider.of<MoneyValue>(context, listen: false).maxBalance =
+                        _chartData[index];
                   },
                 ),
                 const Spacer(),

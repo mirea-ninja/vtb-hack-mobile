@@ -1,13 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
+import 'package:vtb_hack_mobile/src/game/game_landing_screen.dart';
+import 'package:vtb_hack_mobile/src/providers/money_value.dart';
 import 'package:vtb_hack_mobile/src/quiz/widgets/money_value_changer.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
+import 'package:provider/provider.dart';
 
-class QuizMoneyEveryMonthScreen extends StatelessWidget {
-  const QuizMoneyEveryMonthScreen({Key? key}) : super(key: key);
+class QuickStartMoneyEveryMonthScreen extends StatelessWidget {
+  const QuickStartMoneyEveryMonthScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final moneyProvider = Provider.of<MoneyValue>(context);
     return Scaffold(
       backgroundColor: const Color.fromRGBO(34, 90, 214, 1),
       body: SafeArea(
@@ -29,8 +34,8 @@ class QuizMoneyEveryMonthScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
-              const Text(
-                "70 000 ₽",
+              Text(
+                moneyProvider.maxBalance.toString(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 39,
@@ -103,7 +108,11 @@ class QuizMoneyEveryMonthScreen extends StatelessWidget {
               const SizedBox(height: 12),
               const MoneyValueChanger(goalIndex: 3),
               const Spacer(),
-              FullWidthButton(text: 'Продолжить', onPressed: () {})
+              FullWidthButton(text: 'Продолжить', onPressed: () {Navigator.push(
+                context,
+                CupertinoPageRoute(
+                    builder: (context) => const GameLandingScreen()),
+              );})
             ],
           ),
         ),

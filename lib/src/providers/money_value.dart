@@ -2,14 +2,16 @@ import 'package:flutter/cupertino.dart';
 
 class MoneyValue with ChangeNotifier {
   List<int> goalsValues = [0, 0, 0, 0];
-  int _maxBalance = 70000;
+  double _maxBalance = 70000;
 
-  set maxBalance(int value) {
+  set maxBalance(double value) {
     _maxBalance = value;
     notifyListeners();
   }
 
-  int get maxBalance => _maxBalance;
+  double get maxBalance => _maxBalance;
+
+  double get investBalance => goalsValues[0].toDouble();
 
   void changeGoalsValues(int goal, int sum) {
     int tmpBalance = goalsValues[goal] + sum;
