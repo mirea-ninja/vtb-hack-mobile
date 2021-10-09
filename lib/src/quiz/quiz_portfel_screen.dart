@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
+import 'package:vtb_hack_mobile/src/quick_start/quick_start_screen.dart';
 import 'package:vtb_hack_mobile/src/quiz/widgets/quiz_options_list_view.dart';
 import 'package:vtb_hack_mobile/src/settings/size_config.dart';
 
@@ -77,7 +78,7 @@ class _QuizPortfelScreen extends State<QuizPortfelScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => GameHomeScreen()),
+                            builder: (context) => const QuickStartScreen()),
                       );
                     },
                   ),

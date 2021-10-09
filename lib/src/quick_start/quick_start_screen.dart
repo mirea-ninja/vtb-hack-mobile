@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
+import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
 import 'package:vtb_hack_mobile/src/quick_start/widgets/quick_start_label.dart';
 
 import '../settings/size_config.dart';
@@ -102,7 +103,15 @@ class QuickStartScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 14),
-                FullWidthButton(text: 'Приступить', onPressed: () {}),
+                FullWidthButton(
+                    text: 'Приступить',
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const GameHomeScreen()),
+                      );
+                    }),
               ],
             )),
       ),
