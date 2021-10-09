@@ -92,8 +92,7 @@ class _QuizQuestionRateExpScreenState extends State<QuizQuestionRateExpScreen> {
                     Navigator.push(
                       context,
                       CupertinoPageRoute(
-                          builder: (context) =>
-                              const QuizWhatDoYouWantScreen()),
+                          builder: (context) => QuizWhatDoYouWantScreen()),
                     );
                   },
                 ),

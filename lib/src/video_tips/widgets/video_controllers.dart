@@ -56,8 +56,8 @@ class _VideoControllersState extends State<VideoControllers> {
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 12,
-                  fontFamily: "Gilroy",
-                  fontWeight: FontWeight.w500,
+                  fontFamily: "Rubik",
+                  fontWeight: FontWeight.w400,
                 ),
               ),
               SizedBox(width: MySize.size12),
@@ -92,42 +92,45 @@ class _VideoControllersState extends State<VideoControllers> {
             ],
           ),
         ),
-        Container(
-          width: 114,
-          height: 44,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
-              BoxShadow(
-                color: Color(0x267e7e7e),
-                blurRadius: 250,
-                offset: Offset(0, 4),
-              ),
-            ],
-            color: const Color(0xff2a64e3),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
+        Padding(
+          padding: EdgeInsets.only(top: 0, bottom: 0, left: 10, right: 0),
+          child: Container(
+            width: 114,
+            height: 44,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                  color: Color(0x267e7e7e),
+                  blurRadius: 250,
+                  offset: Offset(0, 4),
                 ),
-                child: SvgPicture.asset(
-                  'assets/icons/text.svg',
+              ],
+              color: const Color(0xff2a64e3),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 24,
+                  height: 24,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: SvgPicture.asset(
+                    'assets/icons/text.svg',
+                  ),
                 ),
-              ),
-              SizedBox(width: MySize.size6),
-              const Text(
-                "Читать",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                ),
-              )
-            ],
+                SizedBox(width: MySize.size6),
+                const Text(
+                  "Текст",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ],
