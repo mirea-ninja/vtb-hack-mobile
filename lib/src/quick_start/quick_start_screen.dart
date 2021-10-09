@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
+import 'package:vtb_hack_mobile/src/quick_start/quick_start_money_every_month_screen.dart';
 import 'package:vtb_hack_mobile/src/quick_start/widgets/quick_start_label.dart';
 import 'package:vtb_hack_mobile/src/video_tips/video_tips_screen.dart';
 
@@ -39,7 +40,7 @@ class QuickStartScreen extends StatelessWidget {
                   ),
                 ),
                 const Text(
-                  "Выполните задания и получи акции и бонуы от банка ",
+                  "Выполните задания и получи акции и бонусы от банка ",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 31,
@@ -121,7 +122,7 @@ class QuickStartScreen extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const GameHomeScreen()),
+                                              const QuickStartMoneyEveryMonthScreen()),
                                       (Route<dynamic> route) => false);
                                 },
                                 onSkipClick: () {
@@ -129,7 +130,7 @@ class QuickStartScreen extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const GameHomeScreen()),
+                                              const QuickStartMoneyEveryMonthScreen()),
                                       (Route<dynamic> route) => false);
                                 },
                                 text: '',
