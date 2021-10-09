@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/easy_start/models/stocks_model.dart';
 import 'package:vtb_hack_mobile/src/easy_start/widgets/bonds_listview.dart';
 import 'package:vtb_hack_mobile/src/easy_start/widgets/recommends_card.dart';
@@ -72,122 +74,193 @@ class EasyStartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final investProvider = Provider.of<InvestBalance>(context);
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.all(MySize.size30!),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      alignment: Alignment.centerLeft),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text(
-                    "Назад",
-                    style: TextStyle(
-                      color: Color(0xff0a0a0a),
+      body: Stack(children: [
+        SingleChildScrollView(
+          child: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.all(MySize.size30!),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextButton(
+                    style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                        alignment: Alignment.centerLeft),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text(
+                      "Назад",
+                      style: TextStyle(
+                        color: Color(0xff0a0a0a),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 49),
+                  const SizedBox(height: 49),
+                  const Text(
+                    "Легкий старт",
+                    style: TextStyle(
+                      color: Color(0xff222222),
+                      fontSize: 14,
+                      fontFamily: "Rubik",
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 13),
+                  Text(
+                    "Вы готовы \nинвестировать ${investProvider.balance.toStringAsFixed(0)}\n",
+                    style: const TextStyle(
+                      color: Color(0xff222222),
+                      fontSize: 25,
+                      fontFamily: "Rubik",
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  const Text(
+                    "Выберите акции, облигации \nи готовый портфель на эту сумму!",
+                    style: TextStyle(
+                      color: Color(0xffababab),
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 31),
+                  const RecommendsCard(),
+                  const SizedBox(height: 56),
+                  const CircleNumberIcon(number: 1),
+                  const SizedBox(height: 20),
+                  const Text(
+                    "Более тысячи акций с Московской и Санкт-Петербургской биржи",
+                    style: TextStyle(
+                      color: Color(0xff222222),
+                      fontSize: 18,
+                      fontFamily: "Rubik",
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  const Text(
+                    "Мы подобрали 5 акций с высоким показателем за год",
+                    style: TextStyle(
+                      color: Color(0xff222222),
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  const Text(
+                    "Выберите 3 акции:",
+                    style: TextStyle(
+                      color: Color(0xffababab),
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 17),
+                  StocksList(stocks: stocks),
+                  const SizedBox(height: 44),
+                  const CircleNumberIcon(number: 2),
+                  const SizedBox(height: 20),
+                  const Text(
+                    "Дайте деньги компании или государству в долг под процент",
+                    style: TextStyle(
+                      color: Color(0xff222222),
+                      fontSize: 18,
+                      fontFamily: "Rubik",
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  const Text(
+                    "Мы подобрали 5 облигации популярные у инвесторов",
+                    style: TextStyle(
+                      color: Color(0xff222222),
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  const Text(
+                    "Выберите 3 облигации:",
+                    style: TextStyle(
+                      color: Color(0xffababab),
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 17),
+                  BondsList(bonds: bonds),
+                  const SizedBox(height: 44),
+                  const CircleNumberIcon(number: 3),
+                  const SizedBox(height: 20),
+                  const Text(
+                    "Готовый портфель в один клик",
+                    style: TextStyle(
+                      color: Color(0xff222222),
+                      fontSize: 18,
+                      fontFamily: "Rubik",
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  const Text(
+                    "Готовые портфели для тех, кто не знает с чего начать",
+                    style: TextStyle(
+                      color: Color(0xff222222),
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  const Text(
+                    "Выберите 1 готовый портфель",
+                    style: TextStyle(
+                      color: Color(0xffababab),
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 17),
+                  Image.asset('assets/images/ready_portfolio_block.png'),
+                  const SizedBox(height: 200),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: 0,
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 35, horizontal: 41),
+            width: MediaQuery.of(context).size.width,
+            height: 215,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: const Color(0xff225ad6),
+            ),
+            child: Column(
+              children: [
                 const Text(
-                  "Легкий старт",
+                  "2 445, 22 ₽",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Color(0xff222222),
-                    fontSize: 14,
+                    color: Colors.white,
+                    fontSize: 39,
                     fontFamily: "Rubik",
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(height: 13),
-                Text(
-                  "Вы готовы \nинвестировать ${investProvider.balance.toStringAsFixed(0)}\n",
-                  style: const TextStyle(
-                    color: Color(0xff222222),
-                    fontSize: 25,
-                    fontFamily: "Rubik",
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 5),
                 const Text(
-                  "Выберите акции, облигации \nи готовый портфель на эту сумму!",
+                  "У вас осталось",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Color(0xffababab),
-                    fontSize: 14,
+                    color: Colors.white,
+                    fontSize: 16,
                   ),
                 ),
-                const SizedBox(height: 31),
-                const RecommendsCard(),
-                const SizedBox(height: 56),
-                const CircleNumberIcon(number: 1),
-                const SizedBox(height: 20),
-                const Text(
-                  "Более тысячи акций с Московской и Санкт-Петербургской биржи",
-                  style: TextStyle(
-                    color: Color(0xff222222),
-                    fontSize: 18,
-                    fontFamily: "Rubik",
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 15),
-                const Text(
-                  "Мы подобрали 5 акций с высоким показателем за год",
-                  style: TextStyle(
-                    color: Color(0xff222222),
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(height: 15),
-                const Text(
-                  "Выберите 3 акции:",
-                  style: TextStyle(
-                    color: Color(0xffababab),
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(height: 17),
-                StocksList(stocks: stocks),
-                const SizedBox(height: 44),
-                const CircleNumberIcon(number: 2),
-                const SizedBox(height: 20),
-                const Text(
-                  "Дайте деньги компании или государству в долг под процент",
-                  style: TextStyle(
-                    color: Color(0xff222222),
-                    fontSize: 18,
-                    fontFamily: "Rubik",
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 15),
-                const Text(
-                  "Мы подобрали 5 облигации популярные у инвесторов",
-                  style: TextStyle(
-                    color: Color(0xff222222),
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(height: 15),
-                const Text(
-                  "Выберите 3 облигации:",
-                  style: TextStyle(
-                    color: Color(0xffababab),
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(height: 17),
-                BondsList(bonds: bonds),
+                const Spacer(),
+                FullWidthButton(
+                    text: 'Использовать стратегию', onPressed: () {})
               ],
             ),
           ),
         ),
-      ),
+      ]),
     );
   }
 }
