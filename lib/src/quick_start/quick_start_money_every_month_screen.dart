@@ -36,7 +36,7 @@ class QuickStartMoneyEveryMonthScreen extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               Text(
-                moneyProvider.maxBalance.toString(),
+                moneyProvider.maxBalance.toStringAsFixed(0),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 39,
@@ -114,7 +114,7 @@ class QuickStartMoneyEveryMonthScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     CupertinoPageRoute(
-                        builder: (context) => const EasyStartScreen()),
+                        builder: (context) => EasyStartScreen()),
                   );
                 } else {
                   showDialog<void>(

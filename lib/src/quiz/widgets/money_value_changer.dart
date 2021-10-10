@@ -56,7 +56,7 @@ class MoneyValueChanger extends StatelessWidget {
               child: Consumer<MoneyValue>(
                 builder: (ctx, x, child) {
                   return Text(
-                    x.goalsValues[goalIndex].toString() + ' ₽',
+                    x.goalsValues[goalIndex].toStringAsFixed(0) + ' ₽',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 21,
