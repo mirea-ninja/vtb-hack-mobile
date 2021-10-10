@@ -233,7 +233,7 @@ class EasyStartScreen extends StatelessWidget {
         Positioned(
           bottom: 0,
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 35, horizontal: 41),
+            padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 41),
             width: MediaQuery.of(context).size.width,
             height: 215,
             decoration: BoxDecoration(
@@ -242,14 +242,28 @@ class EasyStartScreen extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Text(
-                  _getCurrentBalance(context).toStringAsFixed(2) + "₽",
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 39,
-                    fontFamily: "Rubik",
-                    fontWeight: FontWeight.w500,
+                Consumer<StocksPortfolio>(
+                  builder: (ctx, stocks, child) {
+                    return Text(
+                      _getCurrentBalance(context).toStringAsFixed(2) + "₽",
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 39,
+                        fontFamily: "Rubik",
+                        fontWeight: FontWeight.w500,
+                      ),
+                    );
+                  },
+                  child: Text(
+                    _getCurrentBalance(context).toStringAsFixed(2) + "₽",
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 39,
+                      fontFamily: "Rubik",
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 5),
