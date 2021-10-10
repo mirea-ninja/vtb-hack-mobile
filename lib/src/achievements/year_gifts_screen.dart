@@ -104,7 +104,7 @@ class YearGiftsScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 4),
                         Text(
-                          "4 из 8 ачивок",
+                          "1 из 8 ачивок",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 19,

@@ -2,22 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:vtb_hack_mobile/src/achievements/models/achievement_model.dart';
 import 'package:vtb_hack_mobile/src/achievements/widgets/achievement_card.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
+import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
+import 'package:vtb_hack_mobile/src/video_tips/video_tips_screen.dart';
 
 class YearAchievementscreen extends StatelessWidget {
   YearAchievementscreen({Key? key}) : super(key: key);
 
   final List<AchievementModel> achievements = [
     AchievementModel(
-        title: 'За смелость!\nвы прошли мини игру\nобучение\n',
-        image: Image.asset('assets/images/achievement.png')),
-    AchievementModel(
-        title: 'За смелость!\nвы прошли мини игру\nобучение\n',
-        image: Image.asset('assets/images/achievement.png')),
-    AchievementModel(
-        title: 'За смелость!\nвы прошли мини игру\nобучение\n',
-        image: Image.asset('assets/images/achievement.png')),
-    AchievementModel(
-        title: 'За смелость!\nвы прошли мини игру\nобучение\n',
+        title: 'Легкий старт\nвы прошли мини игру\nобучение\n',
         image: Image.asset('assets/images/achievement.png')),
   ];
 
@@ -88,7 +81,40 @@ class YearAchievementscreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              FullWidthButton(text: 'Дальше', onPressed: () {})
+              FullWidthButton(
+                  text: 'Дальше',
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => VideoTipsScreen(
+                              infoTitle:
+                                  'Как работает рынок, и почему это выгодно?',
+                              infoText:
+                                  'Мы расскажем, как найти баланс в инвестициях и минимизировать риски.',
+                              buttonText: 'Продолжить',
+                              onButtonClick: () {
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const GameHomeScreen()),
+                                    (Route<dynamic> route) => false);
+                              },
+                              onSkipClick: () {
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const GameHomeScreen()),
+                                    (Route<dynamic> route) => false);
+                              },
+                              text: '',
+                              videoUrl:
+                                  'https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4'),
+                        ),
+                        (Route<dynamic> route) => false);
+                  })
             ],
           ),
         ),
