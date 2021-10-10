@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:vtb_hack_mobile/src/achievements/models/achievement_model.dart';
 import 'package:vtb_hack_mobile/src/common_widgets/full_width_button.dart';
 import 'package:vtb_hack_mobile/src/easy_start/models/stocks_model.dart';
 import 'package:vtb_hack_mobile/src/easy_start/widgets/bonds_listview.dart';
 import 'package:vtb_hack_mobile/src/easy_start/widgets/recommends_card.dart';
 import 'package:vtb_hack_mobile/src/easy_start/widgets/stocks_listview.dart';
 import 'package:vtb_hack_mobile/src/game/game_home_screen.dart';
+import 'package:vtb_hack_mobile/src/providers/achievements.dart';
 import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
 import 'package:vtb_hack_mobile/src/providers/money_value.dart';
 import 'package:vtb_hack_mobile/src/providers/stock_portfolio.dart';
@@ -245,7 +247,7 @@ class EasyStartScreen extends StatelessWidget {
                 Consumer<StocksPortfolio>(
                   builder: (ctx, stocks, child) {
                     return Text(
-                      _getCurrentBalance(context).toStringAsFixed(2) + "₽",
+                      _getCurrentBalance(ctx).toStringAsFixed(2) + "₽",
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: Colors.white,
@@ -281,6 +283,13 @@ class EasyStartScreen extends StatelessWidget {
                     onPressed: () {
                       Provider.of<MoneyValue>(context, listen: false)
                           .investBalance = _getCurrentBalance(context);
+
+                      AchievementModel ach = AchievementModel(
+                          title: 'Легкий старт',
+                          image: Image.asset('assets/images/achievement.png'));
+
+                      Provider.of<Achievements>(context, listen: false)
+                          .addAchievement(ach);
 
                       Navigator.pushAndRemoveUntil(
                           context,

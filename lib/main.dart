@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:vtb_hack_mobile/src/providers/achievements.dart';
 import 'package:vtb_hack_mobile/src/providers/invest_balance.dart';
 import 'package:vtb_hack_mobile/src/providers/money_value.dart';
 import 'package:vtb_hack_mobile/src/providers/stock_portfolio.dart';
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => StocksPortfolio(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => Achievements(),
         ),
       ],
       child: MaterialApp(
